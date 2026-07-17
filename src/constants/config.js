@@ -1,4 +1,4 @@
-export const DEFAULT_GEMINI_API_KEY = 'AIzaSyCn96SojPNgJbJe8wLrCsyXEEZXS7V5Zbs'
+export const DEFAULT_GEMINI_API_KEY = import.meta.env.VITE_API_KEY;
 
 export const SUMMARY_TONE_PROMPTS = {
   corporate: 'Write in a highly professional, conservative, and polished executive tone suitable for corporate environments (e.g. finance, consulting, enterprise). Use traditional executive power verbs.',

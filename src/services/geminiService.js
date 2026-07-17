@@ -10,14 +10,12 @@ export const callGeminiAPI = async (promptText, apiKey) => {
 
   for (const activeApiKey of keys) {
     try {
-      // AQ. keys = newer Google OAuth tokens -> use Authorization: Bearer header
-      // AIzaSy keys = classic API keys -> use ?key= query param
+      // Support both universal x-goog-api-key / query params and Bearer token formats
       const isOAuthToken = activeApiKey.startsWith('AQ.')
-      const url = isOAuthToken
-        ? 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent'
-        : `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${activeApiKey}`
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${activeApiKey}`
       const headers = {
         'Content-Type': 'application/json',
+        'x-goog-api-key': activeApiKey,
         ...(isOAuthToken ? { Authorization: `Bearer ${activeApiKey}` } : {}),
       }
 

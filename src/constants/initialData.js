@@ -1,0 +1,15 @@
+export const emptyResumeData = {
+  name: '',
+  title: '',
+  email: '',
+  phone: '',
+  location: '',
+  linkedin: '',
+  github: '',
+  website: '',
+  summary: '',
+  experience: [],
+  education: [],
+  projects: [],
+  skills: '',
+}
